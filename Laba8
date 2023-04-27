@@ -1,0 +1,18 @@
+import datetime
+
+def decorator(func):
+	def wrapper(*args,**kwargs):
+		print(f'Функция начала свою работу в: {datetime.datetime.now()}')
+		result = funs(*args,**kwargs)
+		print(f'Сумма: {result}$')
+		return result
+	return wrapper
+	
+@decorator
+def taxi_cost(distance):
+	meters = distance * 1000
+	cost = 4 + (meters / 140) * 0.25
+	return round (cost, 2)
+	
+if __name__ == "__main__":
+	taxi_cost(200)
